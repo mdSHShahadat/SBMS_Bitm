@@ -1,0 +1,212 @@
+﻿@model BusinessManagementSystemApp.Models.Models.SalesViewModel
+@{
+    /**/
+
+    ViewBag.Title = "SaveSalesProduct";
+}
+<h4 class="text-info">@ViewBag.Message</h4>
+<form method="post">
+    <div class="container" style="margin-top:3%">
+        <div class="form-group row">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Sale Products
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-5">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="margin-bottom:1%">
+                                        <h3 class="panel-title">
+                                            Customer
+                                        </h3>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Customer
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(c => c.CustomerId, ViewBag.Customers as SelectList, "--Select--", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Date
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @placeholder = "Date" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Loyalty Point
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.LoyaltyPoint, new { htmlAttributes = new { @class = "form-control", @placeholder = "Loyalty Point", @readonly = "readonly" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="margin-bottom:1%">
+                                        <h3 class="panel-title">
+                                            Product
+                                        </h3>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Product
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(c => c.ProductId, ViewBag.Products as SelectList, "--Select--", new { @class = "form-control" })
+                                            <input type="hidden" id="ProductName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Available Quantity
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.AvailabelQuantity, new { htmlAttributes = new { @class = "form-control", @placeholder = "Available Quantity", @readonly = "readonly" } })
+                                            <input type="hidden" id="reorderLevel" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Unit Price
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Unit Price", @readonly = "readonly" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+                                            Quantity
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @placeholder = "Quantity" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="margin-left:1%">
+                                        <div class="col-md-2">
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="button" id="AddButton" class="btn btn-info" value="Add" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label id="alert" style="display:none" class="text-danger">Reorder level alert!</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            Products Details
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <table class="table table-bordered table-hover table-striped">
+                                                    <thead style="background-color:teal; color:white; text-align:center">
+                                                        <tr>
+                                                            <td>SL</td>
+                                                            <td>Product</td>
+                                                            <td>Quantity</td>
+                                                            <td>Unit Price(Tk)</td>
+                                                            <td>Total Price(Tk)</td>
+                                                            <td>Action</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tableBody" style="text-align:center; font-weight:bold">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group row">
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-2">
+                                                        Grand Total(Tk)
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @Html.TextBoxFor(c => c.GrandTotal, new { @class = "form-control", @placeholder = "Grand Total", @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group row">
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-2">
+                                                        Discount(%)
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @Html.TextBoxFor(c => c.DiscountParcent, new { @class = "form-control", @placeholder = "Discount %" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group row">
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-2">
+                                                        Discount Amount(Tk)
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @Html.TextBoxFor(c => c.DiscountAmount, new { @class = "form-control", @placeholder = "Discount Amount", @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group row">
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-2">
+                                                        Payable Amount(Tk)
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        @Html.TextBoxFor(c => c.PayableAmount, new { @class = "form-control", @placeholder = "Payable Amount" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7"></div>
+                                            <div class="col-md-5">
+                                                <input type="submit" id="SalesSubmitButton" class="btn btn-block btn-success" value="Save" disabled="disabled" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+
+    <script src="~/Scripts/Project Scripts/ProductSalesScripts/SalesProductJS.js"></script>
+}

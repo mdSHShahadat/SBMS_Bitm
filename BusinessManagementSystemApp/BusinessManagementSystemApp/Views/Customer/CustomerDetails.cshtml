@@ -1,0 +1,104 @@
+﻿@model BusinessManagementSystemApp.Models.Models.CustomerViewModel
+@{
+    /**/
+
+    ViewBag.Title = "CustomerDetails";
+}
+
+<div class="container">
+    <div class="row">
+        <a style="margin-top:2%" href="/Customer/Index" class="btn btn-info"><i class="glyphicon glyphicon-list"></i> Customer List</a><hr />
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <h3 class="text-danger" align="center">@ViewBag.Message</h3>
+}
+@if (Model != null)
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="text-primary">
+                Show Customer Details
+            </h4>
+        </div>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="IsActive" value="True" />
+        <input type="hidden" name="Date" value="@DateTime.Now.ToShortDateString()" />
+        <div class="container" style="width:80%; margin-top:3%">
+            <div class="col-md-9">
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label>Customer Name</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.CustomerName, new { @class = "form-control", @readonly="readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label>Customer Code</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.CustomerCode, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label>Address</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.Address, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label>Email</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.Email, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label>Contact</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.Contact, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label>Loyalty Point</label>
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.LoyaltyPoint, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-5">
+                        <a href="/Customer/UpdateCustomer?id=@Model.Id" class="btn btn-success"><b>Edit</b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <img src="@Url.Content(Model.ImagePath)" width="90%" height="200" style="border:1px solid red" />
+                    <h4 class="text-info" align="center">Image</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

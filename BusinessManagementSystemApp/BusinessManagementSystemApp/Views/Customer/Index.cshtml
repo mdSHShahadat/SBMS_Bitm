@@ -1,0 +1,67 @@
+﻿@model BusinessManagementSystemApp.Models.Models.CustomerViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<form method="post">
+    <div class="container">
+        <h3 class="text" style="text-align:center">
+            <b style="background-color:darkgreen; color:white">Customer List</b>
+        </h3>
+    </div>
+    <div class="container" style="margin-top:3%">
+        <div class="form-group row">
+            <div class="col-md-9">
+                <a href="/Customer/SaveCustomer" class="btn btn-info"><i class="glyphicon glyphicon-new-window"> <b>New Customer</b></i></a>
+            </div>
+            <div class="col-md-3">
+                <input type="text" placeholder="Search.." name="SearchText">
+                <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover table-striped table-responsive">
+                    <thead style="background-color:teal; color:white; text-align:center; font-weight:bold">
+                        <tr>
+                            <td>SL</td>
+                            <td>Customer Name</td>
+                            <td>Code</td>
+                            <td>Address</td>
+                            <td>Email</td>
+                            <td>Contact Number</td>
+                            <td>Loyalty Point</td>
+                            <td>Edit</td>
+                            <td>Details</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    @if (Model != null && Model.Customers.Count > 0)
+                    {
+                        <tbody style="text-align:center; font-weight:bold">
+                            @{ int sl = 1;}
+                            @foreach (var customer in Model.Customers)
+                            {
+                                <tr>
+                                    <td>@(sl++)</td>
+                                    <td>@customer.CustomerName</td>
+                                    <td>@customer.CustomerCode</td>
+                                    <td>@customer.Address</td>
+                                    <td>@customer.Email</td>
+                                    <td>@customer.Contact</td>
+                                    <td>@customer.LoyaltyPoint</td>
+                                    <td><a href="/Customer/UpdateCustomer?id=@customer.Id" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                                    <td><a href="/Customer/CustomerDetails?id=@customer.Id" class="btn btn-warning"><i class="glyphicon glyphicon-th-list"></i></a></td>
+                                    <td><a href="/Customer/DeleteCustomer?id=@customer.Id" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

@@ -1,0 +1,6 @@
+D:\BusinessManagementSystemApp\BusinessManagementSystemApp.Models\obj\Debug\BusinessManagementSystemApp.Models.csprojAssemblyReference.cache
+D:\BusinessManagementSystemApp\BusinessManagementSystemApp.Models\obj\Debug\BusinessManagementSystemApp.Models.csproj.CoreCompileInputs.cache
+D:\BusinessManagementSystemApp\BusinessManagementSystemApp.Models\bin\Debug\BusinessManagementSystemApp.Models.dll
+D:\BusinessManagementSystemApp\BusinessManagementSystemApp.Models\bin\Debug\BusinessManagementSystemApp.Models.pdb
+D:\BusinessManagementSystemApp\BusinessManagementSystemApp.Models\obj\Debug\BusinessManagementSystemApp.Models.dll
+D:\BusinessManagementSystemApp\BusinessManagementSystemApp.Models\obj\Debug\BusinessManagementSystemApp.Models.pdb

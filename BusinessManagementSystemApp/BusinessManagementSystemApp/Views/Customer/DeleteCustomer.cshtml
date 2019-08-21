@@ -1,0 +1,102 @@
+﻿@model BusinessManagementSystemApp.Models.Models.CustomerViewModel
+@{
+    ViewBag.Title = "DeleteSupplier";
+}
+
+<div class="container">
+    <div class="row">
+        <a style="margin-top:2%" href="/Customer/Index" class="btn btn-info"><i class="glyphicon glyphicon-list"></i> Customer List</a><hr />
+        <h3 class="text-danger">Are you sure to delete <b style="background-color:yellow;"><u>'@Model.CustomerName'</u></b> customer?</h3>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <h3 class="text-danger" align="center">@ViewBag.Message</h3>
+}
+<form method="post">
+    @if (Model != null)
+    {
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h4 class="text-danger">Delete Supplier</h4>
+            </div>
+            <input type="hidden" name="SupplierId" value="@Model.Id" />
+            <input type="hidden" name="IsActive" value="False" />
+            <input type="hidden" name="Date" value="@DateTime.Now.ToShortDateString()" />
+            <div class="container" style="width:80%; margin-top:3%">
+                <div class="col-md-9">
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <label>Customer Name</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(c => c.CustomerName, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <label>Customer Code</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(c => c.CustomerCode, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <label>Address</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(c => c.Address, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(c => c.Email, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <label>Contact</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(c => c.Contact, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <label>Loyalty Point</label>
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(c => c.LoyaltyPoint, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-5">
+                            <input type="submit" class="btn btn-block btn-danger" value="Confirm Delete" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group row">
+                        <img src="@Url.Content(Model.ImagePath)" width="90%" height="200" style="border:1px solid red" />
+                        <h4 class="text-info" align="center">Image</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</form>
